@@ -1,7 +1,9 @@
 import React, { useState } from "react";
 // import "./App.css";
+import { useNavigate } from "react-router-dom";
 
 function Todo() {
+  const navigate = useNavigate();
   const [tasks, setTasks] = useState([]);
   const [newTask, setNewTask] = useState("");
   const [editingIndex, setEditingIndex] = useState(null);
@@ -49,7 +51,7 @@ function Todo() {
 
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 p-4">
-      <h1 className="text-4xl font-bold mb-4">ToDo Todo</h1>
+      <h1 className="text-4xl font-bold mb-4 hover:animate-spin">ToDo Todo</h1>
       <div className="flex mb-4">
         <input
           type="text"
@@ -72,6 +74,7 @@ function Todo() {
         placeholder="Search tasks"
         className="border p-2 rounded-lg mb-4 w-full max-w-md focus:outline-none"
       />
+      <button className="border border-black mx-2 px-10 rounded-xl bg-white" onClick={() => navigate("/")}>back Home</button>
       <ul className="w-full max-w-md">
         {filteredTasks.map((task, index) => (
           <li
